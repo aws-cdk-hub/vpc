@@ -1,4 +1,4 @@
-# Welcome to your CDK TypeScript project!
+# Welcome to your CDK TypeScript project for VPC
 
 This is a sample VPC for TypeScript development with CDK.
 
