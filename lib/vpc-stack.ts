@@ -1,5 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import ec2 = require('@aws-cdk/aws-ec2');
+import console = require('console');
 
 export class VpcStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -9,6 +10,7 @@ export class VpcStack extends cdk.Stack {
     const vpc = new ec2.Vpc(this, 'CDK Hub VPC', {
       cidr: "10.0.0.0/16",
       maxAzs: 2,
+      enableDnsSupport: true,
       subnetConfiguration: [{
         cidrMask: 26,
         name: 'isolatedSubnet',
@@ -24,7 +26,9 @@ export class VpcStack extends cdk.Stack {
         name: 'publicSubnet',
         subnetType: ec2.SubnetType.PUBLIC,
       }],
-    natGateways: 1
+    natGateways: 1,
    });
+
+  console.log("AWS CDK Hub VPC Sample");
   }
 }
